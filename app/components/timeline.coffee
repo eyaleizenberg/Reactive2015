@@ -20,8 +20,15 @@ Timeline = React.createClass(
       </View>
 
       <View style={styles.container}>
+        <View style={styles.paddingContainer}>
+          <View style={styles.verticalLine}></View>
+        </View>
         <View style={styles.slotHolder}>
           <View style={styles.line}></View>
+          <View style={styles.box}></View>
+        </View>
+        <View style={styles.paddingContainer}>
+          <View style={styles.verticalLine}></View>
         </View>
       </View>
 
@@ -38,13 +45,20 @@ Timeline = React.createClass(
 
 styles = StyleSheet.create(
   container:
-    alignItems: 'center'
-    justifyContent: 'center'
     height: window.height
+  paddingContainer:
+    flex: 1
+    marginLeft: window.width / 2
+  verticalLine:
+    width: 6
+    backgroundColor: 'white'
+    flex: 1
   slotHolder:
     flexDirection: 'row'
+    alignItems: 'center'
     width: window.width
     marginBottom: 14
+    height: window.height / 3
   timeText:
     color: "#1bd982"
   line:
@@ -52,7 +66,12 @@ styles = StyleSheet.create(
     height: 6
     width: 20
     flexDirection: 'row'
-
+  box:
+    flexDirection: 'row'
+    borderWidth: 6
+    borderColor: 'white'
+    width: window.width
+    height: window.height / 3
 )
 
 module.exports = Timeline

@@ -104,7 +104,8 @@ App = React.createClass({
 styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    paddingTop: 20
   }
 });
 

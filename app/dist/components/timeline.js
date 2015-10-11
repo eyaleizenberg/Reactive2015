@@ -33,9 +33,19 @@ Timeline = React.createClass({
     }, "Down"))), React.createElement(View, {
       "style": styles.container
     }, React.createElement(View, {
+      "style": styles.paddingContainer
+    }, React.createElement(View, {
+      "style": styles.verticalLine
+    })), React.createElement(View, {
       "style": styles.slotHolder
     }, React.createElement(View, {
       "style": styles.line
+    }), React.createElement(View, {
+      "style": styles.box
+    })), React.createElement(View, {
+      "style": styles.paddingContainer
+    }, React.createElement(View, {
+      "style": styles.verticalLine
     }))), React.createElement(View, {
       "style": styles.container
     }, React.createElement(TouchableOpacity, {
@@ -58,14 +68,23 @@ Timeline = React.createClass({
 
 styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
     height: window.height
+  },
+  paddingContainer: {
+    flex: 1,
+    marginLeft: window.width / 2
+  },
+  verticalLine: {
+    width: 6,
+    backgroundColor: 'white',
+    flex: 1
   },
   slotHolder: {
     flexDirection: 'row',
+    alignItems: 'center',
     width: window.width,
-    marginBottom: 14
+    marginBottom: 14,
+    height: window.height / 3
   },
   timeText: {
     color: "#1bd982"
@@ -75,6 +94,13 @@ styles = StyleSheet.create({
     height: 6,
     width: 20,
     flexDirection: 'row'
+  },
+  box: {
+    flexDirection: 'row',
+    borderWidth: 6,
+    borderColor: 'white',
+    width: window.width,
+    height: window.height / 3
   }
 });
 

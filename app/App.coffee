@@ -53,6 +53,7 @@ styles = StyleSheet.create(
   appContainer:
     flex: 1
     backgroundColor: 'black'
+    paddingTop: 20
 )
 
 module.exports = App
