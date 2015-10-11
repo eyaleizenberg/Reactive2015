@@ -35,9 +35,9 @@ Timeline = React.createClass(
         </View>
         <View style={styles.slotHolder}>
           <View style={styles.innerContainer}>
-            <View style={styles.line}></View>
-            <View style={styles.box}>
-              <View style={styles.innerBox}>
+            {<View style={styles.line}></View> if @firstTimeline()}
+            <View style={[styles.box, @withExtra()]}>
+              <View style={[styles.innerBox, @withExtraInner()]}>
                 <Text style={styles.timeText}>{@tuesdayInfo.title}</Text>
                 <Text style={styles.timeText}>{@wednesdayInfo.title}</Text>
               </View>
@@ -68,6 +68,9 @@ Timeline = React.createClass(
 
   pushUp: -> @setState top: @state.top + window.height
   pushDown: -> @setState top: @state.top - window.height
+  withExtra: -> styles.extraBox unless @firstTimeline()
+  withExtraInner: -> styles.extraInner unless @firstTimeline()
+  firstTimeline: -> @props.index == 1
 )
 
 styles = StyleSheet.create(
@@ -112,10 +115,15 @@ styles = StyleSheet.create(
     borderColor: 'white'
     width: window.width
     height: window.height / 3
+  extraBox:
+    borderLeftWidth: 0
+    borderRightWidth: 0
   innerBox:
     flex: 1
     justifyContent: 'space-between'
     paddingLeft: 5
+  extraInner:
+    paddingLeft: 20
   tueInfo:
     alignSelf: 'flex-end'
   wedInfo:

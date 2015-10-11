@@ -64,12 +64,12 @@ Timeline = React.createClass({
       "style": styles.slotHolder
     }, React.createElement(View, {
       "style": styles.innerContainer
-    }, React.createElement(View, {
+    }, (this.firstTimeline() ? React.createElement(View, {
       "style": styles.line
-    }), React.createElement(View, {
-      "style": styles.box
+    }) : void 0), React.createElement(View, {
+      "style": [styles.box, this.withExtra()]
     }, React.createElement(View, {
-      "style": styles.innerBox
+      "style": [styles.innerBox, this.withExtraInner()]
     }, React.createElement(Text, {
       "style": styles.timeText
     }, this.tuesdayInfo.title), React.createElement(Text, {
@@ -119,6 +119,19 @@ Timeline = React.createClass({
     return this.setState({
       top: this.state.top - window.height
     });
+  },
+  withExtra: function() {
+    if (!this.firstTimeline()) {
+      return styles.extraBox;
+    }
+  },
+  withExtraInner: function() {
+    if (!this.firstTimeline()) {
+      return styles.extraInner;
+    }
+  },
+  firstTimeline: function() {
+    return this.props.index === 1;
   }
 });
 
@@ -175,10 +188,17 @@ styles = StyleSheet.create({
     width: window.width,
     height: window.height / 3
   },
+  extraBox: {
+    borderLeftWidth: 0,
+    borderRightWidth: 0
+  },
   innerBox: {
     flex: 1,
     justifyContent: 'space-between',
     paddingLeft: 5
+  },
+  extraInner: {
+    paddingLeft: 20
   },
   tueInfo: {
     alignSelf: 'flex-end'
