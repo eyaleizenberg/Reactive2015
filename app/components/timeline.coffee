@@ -21,14 +21,41 @@ Timeline = React.createClass(
 
       <View style={styles.container}>
         <View style={styles.paddingContainer}>
-          <View style={styles.verticalLine}></View>
+          <View style={styles.innerContainer}>
+            <View style={styles.twoFith}>
+              <Text style={[styles.timeText, styles.tueInfo, {paddingLeft: 20}]}>{"Tue #{@tuesdayInfo.time}"}</Text>
+            </View>
+            <View style={styles.oneFith}>
+              <View style={styles.verticalLine}></View>
+            </View>
+            <View style={[styles.twoFith, {justifyContent: 'flex-end'}]}>
+              <Text style={[styles.timeText, styles.tueInfo, {paddingRight: 20}]}>{@tuesdayInfo.speaker}</Text>
+            </View>
+          </View>
         </View>
         <View style={styles.slotHolder}>
-          <View style={styles.line}></View>
-          <View style={styles.box}></View>
+          <View style={styles.innerContainer}>
+            <View style={styles.line}></View>
+            <View style={styles.box}>
+              <View style={styles.innerBox}>
+                <Text style={styles.timeText}>{@tuesdayInfo.title}</Text>
+                <Text style={styles.timeText}>{@wednesdayInfo.title}</Text>
+              </View>
+            </View>
+          </View>
         </View>
         <View style={styles.paddingContainer}>
-          <View style={styles.verticalLine}></View>
+          <View style={styles.innerContainer}>
+            <View style={styles.twoFith}>
+              <Text style={[styles.timeText, styles.wedInfo, {paddingLeft: 20}]}>{"Wed #{@wednesdayInfo.time}"}</Text>
+            </View>
+            <View style={styles.oneFith}>
+              <View style={styles.verticalLine}></View>
+            </View>
+            <View style={[styles.twoFith, {justifyContent: 'flex-end'}]}>
+              <Text style={[styles.timeText, styles.wedInfo, {paddingRight: 20}]}>{@wednesdayInfo.speaker}</Text>
+            </View>
+          </View>
         </View>
       </View>
 
@@ -45,26 +72,39 @@ Timeline = React.createClass(
 
 styles = StyleSheet.create(
   container:
-    height: window.height
+    flex: 1
   paddingContainer:
     flex: 1
-    marginLeft: window.width / 2
+    width: window.width
   verticalLine:
     width: 6
     backgroundColor: 'white'
-    flex: 1
-  slotHolder:
-    flexDirection: 'row'
-    alignItems: 'center'
-    width: window.width
-    marginBottom: 14
     height: window.height / 3
+  slotHolder:
+    flex: 1
+    alignItems: 'center'
   timeText:
     color: "#1bd982"
+    fontSize: 16
+    paddingVertical: 5
+  innerContainer:
+    flexDirection: 'row'
+    flex: 1
+    width: window.width
+  twoFith:
+    flexDirection: 'row'
+    width: window.width * 2 / 5
+  oneFith:
+    flexDirection: 'row'
+    justifyContent: 'center'
+    width: window.width * 1 / 5
+  leftPadder:
+    marginLeft: 30
   line:
     backgroundColor: 'white'
     height: 6
     width: 20
+    marginTop: 101
     flexDirection: 'row'
   box:
     flexDirection: 'row'
@@ -72,6 +112,14 @@ styles = StyleSheet.create(
     borderColor: 'white'
     width: window.width
     height: window.height / 3
+  innerBox:
+    flex: 1
+    justifyContent: 'space-between'
+    paddingLeft: 5
+  tueInfo:
+    alignSelf: 'flex-end'
+  wedInfo:
+    alignSelf: 'flex-start'
 )
 
 module.exports = Timeline

@@ -35,18 +35,74 @@ Timeline = React.createClass({
     }, React.createElement(View, {
       "style": styles.paddingContainer
     }, React.createElement(View, {
+      "style": styles.innerContainer
+    }, React.createElement(View, {
+      "style": styles.twoFith
+    }, React.createElement(Text, {
+      "style": [
+        styles.timeText, styles.tueInfo, {
+          paddingLeft: 20
+        }
+      ]
+    }, "Tue " + this.tuesdayInfo.time)), React.createElement(View, {
+      "style": styles.oneFith
+    }, React.createElement(View, {
       "style": styles.verticalLine
     })), React.createElement(View, {
+      "style": [
+        styles.twoFith, {
+          justifyContent: 'flex-end'
+        }
+      ]
+    }, React.createElement(Text, {
+      "style": [
+        styles.timeText, styles.tueInfo, {
+          paddingRight: 20
+        }
+      ]
+    }, this.tuesdayInfo.speaker)))), React.createElement(View, {
       "style": styles.slotHolder
+    }, React.createElement(View, {
+      "style": styles.innerContainer
     }, React.createElement(View, {
       "style": styles.line
     }), React.createElement(View, {
       "style": styles.box
-    })), React.createElement(View, {
+    }, React.createElement(View, {
+      "style": styles.innerBox
+    }, React.createElement(Text, {
+      "style": styles.timeText
+    }, this.tuesdayInfo.title), React.createElement(Text, {
+      "style": styles.timeText
+    }, this.wednesdayInfo.title))))), React.createElement(View, {
       "style": styles.paddingContainer
     }, React.createElement(View, {
+      "style": styles.innerContainer
+    }, React.createElement(View, {
+      "style": styles.twoFith
+    }, React.createElement(Text, {
+      "style": [
+        styles.timeText, styles.wedInfo, {
+          paddingLeft: 20
+        }
+      ]
+    }, "Wed " + this.wednesdayInfo.time)), React.createElement(View, {
+      "style": styles.oneFith
+    }, React.createElement(View, {
       "style": styles.verticalLine
-    }))), React.createElement(View, {
+    })), React.createElement(View, {
+      "style": [
+        styles.twoFith, {
+          justifyContent: 'flex-end'
+        }
+      ]
+    }, React.createElement(Text, {
+      "style": [
+        styles.timeText, styles.wedInfo, {
+          paddingRight: 20
+        }
+      ]
+    }, this.wednesdayInfo.speaker))))), React.createElement(View, {
       "style": styles.container
     }, React.createElement(TouchableOpacity, {
       "onPress": this.pushUp
@@ -68,31 +124,48 @@ Timeline = React.createClass({
 
 styles = StyleSheet.create({
   container: {
-    height: window.height
+    flex: 1
   },
   paddingContainer: {
     flex: 1,
-    marginLeft: window.width / 2
+    width: window.width
   },
   verticalLine: {
     width: 6,
     backgroundColor: 'white',
-    flex: 1
-  },
-  slotHolder: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: window.width,
-    marginBottom: 14,
     height: window.height / 3
   },
+  slotHolder: {
+    flex: 1,
+    alignItems: 'center'
+  },
   timeText: {
-    color: "#1bd982"
+    color: "#1bd982",
+    fontSize: 16,
+    paddingVertical: 5
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    flex: 1,
+    width: window.width
+  },
+  twoFith: {
+    flexDirection: 'row',
+    width: window.width * 2 / 5
+  },
+  oneFith: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: window.width * 1 / 5
+  },
+  leftPadder: {
+    marginLeft: 30
   },
   line: {
     backgroundColor: 'white',
     height: 6,
     width: 20,
+    marginTop: 101,
     flexDirection: 'row'
   },
   box: {
@@ -101,6 +174,17 @@ styles = StyleSheet.create({
     borderColor: 'white',
     width: window.width,
     height: window.height / 3
+  },
+  innerBox: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingLeft: 5
+  },
+  tueInfo: {
+    alignSelf: 'flex-end'
+  },
+  wedInfo: {
+    alignSelf: 'flex-start'
   }
 });
 
